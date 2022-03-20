@@ -16,6 +16,8 @@ builder.Services.AddSingleton<ReportService>();
 var app = builder.Build();
 
 app.MapHandler<IOTDataCaptureHandler>();
+app.MapHandler<IOTDataCaptureHandlerWithError>();
+
 app.UseRouting();
 app.UseEndpoints((conf) =>
 {

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 public class DeviceContext : DbContext
 {
@@ -12,6 +13,12 @@ public class DeviceContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+          modelBuilder.Entity<DeviceMetadataModel>()
+                .Property(x => x.Id)
+                .UseIdentityColumn()
+                .Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Ignore);
+
     }
 }
 
@@ -20,7 +27,7 @@ public class DeviceContext : DbContext
 public class DeviceMetadataModel
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id {set; get;}
 
     public string Value {set; get;}

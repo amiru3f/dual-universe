@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DualUniverse.Migrations
 {
     [DbContext(typeof(DeviceContext))]
-    [Migration("20220318212016_init")]
+    [Migration("20220320132518_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,10 @@ namespace DualUniverse.Migrations
             modelBuilder.Entity("DeviceMetadataModel", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
