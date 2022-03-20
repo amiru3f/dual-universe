@@ -1,3 +1,9 @@
+# Simple CQRS Sandbox
+## READ/WRITE query splitting
+
+This sandbox tries to describe a simple way to partition READ/WRITE  queries without affecting the main repository of Application layer (This case our repo is EFCore DbContext) using availability group listener
+
+
 
 # What is an Always On availability group?
   
