@@ -1,0 +1,20 @@
+services:
+  database:
+    container_name: sql_db
+    image: mcr.microsoft.com/azure-sql-edge
+    volumes:
+      - ./data:/var/opt/mssql/data
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=123456aA
+  core:
+    container_name: core_svc
+    links: 
+      - database
+    environment:
+      - ConnectionStrings__DeviceDb=Server=sql_db;Database=test;User ID=sa;Password=123456aA;MultipleActiveResultSets=True;
+    build: .
+    ports:
+      - 5000
