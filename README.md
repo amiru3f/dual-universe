@@ -23,5 +23,11 @@ The availability mode is a property of each availability replica. The availabili
   
      An availability replica that uses this availability mode is known as a *synchronous-commit replica*. Under synchronous-commit mode, before committing transactions, a synchronous-commit primary replica waits for a synchronous-commit secondary replica to acknowledge that it has finished hardening the log. Synchronous-commit mode ensures that once a given secondary database is synchronized with the primary database, committed transactions are fully protected. This protection comes at the cost of increased transaction latency. Optionally, SQL Server 2017 introduced a *required synchronized secondaries* feature to further increase safety at the cost of latency when desired. The REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT feature can be enabled to require a specified number of synchronous replicas to commit a transaction before a primary replica is allowed to commit. 
   
- For more information, see [Availability Modes &#40;Always On Availability Groups&#41;](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/active-secondaries-backup-on-secondary-replicas-always-on-availability-groups?view=sql-server-ver15).  
-  
+ For more information, see [Availability Modes &#40;Always On Availability Groups&#41;](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/active-secondaries-backup-on-secondary-replicas-always-on-availability-groups?view=sql-server-ver15). 
+
+ ## How to run?
+In order to run the project using containerized mode you can run the following command.
+```
+docker-compose up --build -d
+```
+It will run azure-sql-server as SQLServer database and a self-hosted dotnet app that seperates Command and query requests using [Readonly] attribute. 
