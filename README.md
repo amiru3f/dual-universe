@@ -5,13 +5,13 @@ This sandbox tries to describe a simple way to partition READ/WRITE  queries wit
 
 
 
-# What is an Always On availability group?
+## What is an Always On availability group?
   
  An *availability group* supports a replicated environment for a discrete set of user databases, known as *availability databases*. You can create an availability group for high availability (HA) or for read-scale. An HA availability group is a group of databases that fail over together. A read-scale availability group is a group of databases that are copied to other instances of SQL Server for read-only workload. An availability group supports one set of primary databases and one to eight sets of corresponding secondary databases. Secondary databases are *not* backups. Continue to back up your databases and their transaction logs on a regular basis.  
   
-## <a name="AvDbs"></a> Availability databases  
+### <a name="AvDbs"></a> Availability databases  
  To add a database to an availability group, the database must be an online, read-write database that exists on the server instance that hosts the primary replica. When you add a database, it joins the availability group as a primary database, while remaining available to clients. No corresponding secondary database exists until backups of the new primary database are restored to the server instance that hosts the secondary replica (using RESTORE WITH NORECOVERY). The new secondary database is in the RESTORING state until it is joined to the availability group. For more information, see [Start Data Movement on an Always On Secondary Database &#40;SQL Server&#41;](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/start-data-movement-on-an-always-on-secondary-database-sql-server?view=sql-server-ver15).  
-## <a name="AvailabilityModes"></a> Availability modes
+### <a name="AvailabilityModes"></a> Availability modes
 
 The availability mode is a property of each availability replica. The availability mode determines whether the primary replica waits to commit transactions on a database until a given secondary replica has written the transaction log records to disk (hardened the log). supports two availability modes-*asynchronous-commit mode* and *synchronous-commit mode*.  
   
