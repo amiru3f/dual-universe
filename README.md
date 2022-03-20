@@ -30,4 +30,4 @@ In order to run the project using containerized mode you can run the following c
 ```
 docker-compose up --build -d
 ```
-It will run azure-sql-server as SQLServer database and a self-hosted dotnet app that seperates Command and query requests using [Readonly] attribute. 
+It will run azure-sql-server as SQLServer database and a self-hosted dotnet app that seperates Command and query requests using [Readonly](https://github.com/amiru3f/dual-universe/blob/master/Entrypoint/Controllers/ReadUniverseController.cs#L15) attribute. 
