@@ -7,7 +7,7 @@ using DualUniverse.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
 
-builder.Services.AddDbContext();
+builder.Services.AddDbContextWithPoolingMechanismEnabled();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ReportService>();

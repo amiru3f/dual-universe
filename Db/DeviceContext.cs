@@ -5,9 +5,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 public class DeviceContext : DbContext
 {
     public DbSet<DeviceMetadataModel> Devices{set; get;}
-    public DeviceContext(DbContextOptions options, bool track) : base(options)
+    public DeviceContext(DbContextOptions options) : base(options)
     {
-        this.ChangeTracker.AutoDetectChangesEnabled = track;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
